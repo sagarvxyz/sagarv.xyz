@@ -24,5 +24,6 @@ addEventListener('DOMContentLoaded', () => {
 
   titleEl.addEventListener('mouseenter', switchTitle);
   titleEl.addEventListener('mouseleave', switchTitle);
-  console.log(root);
+  titleEl.addEventListener('click', switchTitle);
+
 });
