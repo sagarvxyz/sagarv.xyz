@@ -2,28 +2,102 @@
   --primary: rgb(15,15,15);
   --secondary: rgb(60,60,60);
   --tertiary: rgb(200,200,200);
+  --light: rgb(250,250,250);
   --background: rgb(250,250,250);
+  --highlight: rgb(203,96,21);
 }
 html {
-  font-size: 16px;
+  font-size: clamp(16px, 4vw, 24px);
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, 
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 300;
   color: var(--secondary);
 }
 body {
-  margin: 0;
+  display: flex;
+  justify-content: center;
+  margin: auto;
   background: var(--background);
 }
+p, h1 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+p strong {
+  color: var(--background);
+  background-color: var(--highlight);
+  padding: 0.1rem 0.2rem;
+}
 h1 {
-  font-size: 4rem;
   color: var(--primary);
 }
+p {
+  font-size: 1rem;
+  color: var(--secondary);
+}
+ul {
+  padding-inline-start: 20px;
+  padding-inline-end: 20px;
+}
+a:link, a:visited {
+  color: var(--secondary);
+  text-decoration-color: var(--tertiary);
+}
+a:active, a:hover {
+  text-decoration-color: var(--highlight);
+}
 .container {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  max-width: 800px;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 2%;
+}
+.pointer {
+  font-size: 2rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+/* INTRO SECTION */
+.intro {
+  margin-bottom: 5vh;
+}
+.intro > p, h1 {
+  display: inline;
+  position: relative;
+}
+.suptitle {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: 300;
+  top: 25px;
+}
+.title {
+  font-size: 5rem;
+  color: var(--primary);
+}
+.title:hover {
+  font-size: 5rem;
+  color: var(--primary);
+}
+.waving {
+  display: inline-block;
+  font-size: 2.5rem;
+  animation: wave .6s 1;
+  transform-origin: bottom center;
+}
+.suptitle:hover > .waving {
+  animation: wave .6s infinite;
+}
+/* ANIMATIONS */
+@keyframes wave {
+  20%, 60% {
+    transform: skewX(6deg);
+  }
+  40%, 80% {
+    transform: skewX(-8deg);
+  }
+  0%, 100% {
+    transform: skewX(0deg);
+  }
 }
