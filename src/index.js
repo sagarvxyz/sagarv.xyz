@@ -1,18 +1,21 @@
 addEventListener('DOMContentLoaded', () => {
-  const root = document.documentElement;
+  // switch title on hover or click
   const titleEl = document.querySelector('.title');
   const titles = ['Sagar.', 'saa&#8226;gr.'];
-  let loadedAt = new Date().getHours();
 
   function switchText(el, arr) {
     let i = 0;
     return () => {
       i = i === arr.length - 1 ? 0 : i + 1;
-      el.innerHTML =  arr[i];
-    }
+      el.innerHTML = arr[i];
+    };
   }
   const switchTitle = switchText(titleEl, titles);
-  
+
+  // switch to dark mode
+  const root = document.documentElement;
+  const loadedAt = new Date().getHours();
+
   if (loadedAt <= 7 || loadedAt >= 19) {
     root.style.setProperty('--primary', 'rgb(240, 240, 240)');
     root.style.setProperty('--secondary', 'rgb(190, 190, 190)');
@@ -25,5 +28,4 @@ addEventListener('DOMContentLoaded', () => {
   titleEl.addEventListener('mouseenter', switchTitle);
   titleEl.addEventListener('mouseleave', switchTitle);
   titleEl.addEventListener('click', switchTitle);
-
 });
