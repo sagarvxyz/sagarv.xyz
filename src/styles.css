@@ -19,9 +19,12 @@ body {
   margin: auto;
   background: var(--background);
 }
+section {
+  margin-bottom: 1.5rem;
+}
 p, h1 {
   margin-block-start: 0;
-  margin-block-end: 0;
+  margin-block-end: 1.5rem;
 }
 p strong {
   color: var(--background);
@@ -36,8 +39,9 @@ p {
   color: var(--secondary);
 }
 ul {
-  padding-inline-start: 20px;
-  padding-inline-end: 20px;
+  padding-inline-start: 2rem;
+  padding-inline-end: 2rem;
+  margin-block-end: 1.5rem;
 }
 a:link, a:visited {
   color: var(--secondary);
@@ -50,7 +54,7 @@ a:active, a:hover {
   display: flex;
   flex-direction: column;
   max-width: 600px;
-  margin: 2%;
+  margin: 10vh 4vw auto 4vw;
 }
 .pointer {
   font-size: 2rem;
