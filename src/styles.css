@@ -1,16 +1,16 @@
 :root {
-  --primary: rgb(15,15,15);
-  --secondary: rgb(60,60,60);
-  --tertiary: rgb(200,200,200);
-  --light: rgb(250,250,250);
-  --background: rgb(250,250,250);
-  --highlight: rgb(203,96,21);
+  --primary: rgb(15, 15, 15);
+  --secondary: rgb(60, 60, 60);
+  --tertiary: rgb(200, 200, 200);
+  --light: rgb(250, 250, 250);
+  --background: rgb(250, 250, 250);
+  --highlight: rgb(203, 96, 21);
 }
 html {
   font-size: clamp(16px, 4vw, 24px);
-  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, 
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-weight: 300;
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-weight: 300;
   color: var(--secondary);
 }
 body {
@@ -22,7 +22,8 @@ body {
 section {
   margin-bottom: 1.5rem;
 }
-p, h1 {
+p,
+h1 {
   margin-block-start: 0;
   margin-block-end: 1.5rem;
 }
@@ -43,18 +44,20 @@ ul {
   padding-inline-end: 2rem;
   margin-block-end: 1.5rem;
 }
-a:link, a:visited {
+a:link,
+a:visited {
   color: var(--secondary);
   text-decoration-color: var(--tertiary);
 }
-a:active, a:hover {
+a:active,
+a:hover {
   text-decoration-color: var(--highlight);
 }
 .container {
   display: flex;
   flex-direction: column;
   max-width: 600px;
-  margin: 10vh 4vw auto 4vw;
+  margin: auto 4vw;
 }
 .pointer {
   font-size: 2rem;
@@ -66,7 +69,8 @@ a:active, a:hover {
 .intro {
   margin-bottom: 5vh;
 }
-.intro > p, h1 {
+.intro > p,
+h1 {
   display: inline;
   position: relative;
 }
@@ -87,21 +91,24 @@ a:active, a:hover {
 .waving {
   display: inline-block;
   font-size: 2.5rem;
-  animation: wave .6s 1;
+  animation: wave 0.6s 1;
   transform-origin: bottom center;
 }
 .suptitle:hover > .waving {
-  animation: wave .6s infinite;
+  animation: wave 0.6s infinite;
 }
 /* ANIMATIONS */
 @keyframes wave {
-  20%, 60% {
+  20%,
+  60% {
     transform: skewX(6deg);
   }
-  40%, 80% {
+  40%,
+  80% {
     transform: skewX(-8deg);
   }
-  0%, 100% {
+  0%,
+  100% {
     transform: skewX(0deg);
   }
 }
