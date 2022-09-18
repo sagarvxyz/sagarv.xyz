@@ -2,7 +2,6 @@ addEventListener('DOMContentLoaded', () => {
   // switch title on hover or click
   const titleEl = document.querySelector('.title');
   const titles = ['Sagar.', 'saa&#8226;gr.'];
-
   function switchText(el, arr) {
     let i = 0;
     return () => {

@@ -56,8 +56,8 @@ a:hover {
 .container {
   display: flex;
   flex-direction: column;
-  max-width: 600px;
-  margin: auto 4vw;
+  max-width: 800px;
+  margin: auto 2vw;
 }
 .pointer {
   font-size: 2rem;
