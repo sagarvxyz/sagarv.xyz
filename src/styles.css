@@ -1,5 +1,4 @@
 :root {
-
 	--text: rgb(30, 30, 30);
 	--text-mid: rgb(120, 120, 120);
 	--shadow: rgb(240, 240, 240);
@@ -37,6 +36,9 @@ p {
 	margin-block-end: 1rem;
 	line-height: 1.5rem;
 }
+.surtitle {
+	margin-block-end: 0;
+}
 a {
 	color: var(--secondary);
 	text-decoration: none;
@@ -69,5 +71,6 @@ pre {
 .text-block {
 	display: flex;
 	flex-direction: column;
-	max-width: 75%;
+	max-width: 60%;
+	min-width: 350px;
 }
