@@ -1,0 +1,82 @@
+---
+import '@fontsource/bitter/300.css'
+import '@fontsource/bitter/400.css'
+import '@fontsource/raleway/400.css'
+import '@fontsource/raleway/700.css'
+import '@fontsource/fira-code/400.css'
+
+// const text = "rgb(30, 30, 30)";
+// const textMid = "rgb(120, 120, 120)";
+// const textLight = "rgb(240, 240, 240)";
+// const background = "rgb(250, 250, 250)";
+// const primary = "rgb(203, 96, 21)";
+// const secondary = "rgb(140, 169, 215)";
+// const shadow = "rgb(240, 240, 240)";
+---
+<style is:global>
+    :root {
+        --text: rgb(30, 30, 30);
+        --text-mid: rgb(120, 120, 120);
+        --shadow: rgb(240, 240, 240);
+        --text-light: rgb(240, 240, 240);
+        --background: rgb(250, 250, 250);
+        --primary: rgb(203, 96, 21);
+        --secondary: rgb(140, 169, 215);
+    }
+    html {
+        color: var(--text);
+        font-size: 62.5%;
+    }
+    body {
+        margin: 0;
+        font-size: 1.6rem;
+        background: var(--background);
+    }
+    h1,
+    h2,
+    h3 {
+        font-family: 'Raleway', sans-serif;
+        font-weight: 400;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+    h1 {
+        font-size: clamp(3.6rem, 9vw, 8.4rem);
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-block-start: 0;
+        margin-block-end: 1.6rem;
+    }
+    p {
+        font-family: 'Bitter', serif;
+        font-weight: 300;
+        margin-block-start: 0;
+        margin-block-end: 1.6rem;
+        line-height: 2.4rem;
+    }
+    .surtitle {
+        margin-block-end: 0;
+    }
+    a {
+        color: var(--secondary);
+        text-decoration: none;
+    }
+    a:hover,
+    a:active {
+        text-decoration: underline;
+    }
+    strong {
+        background-color: var(--primary);
+        color: var(--background);
+        padding: 0.1rem 0.2rem;
+    }
+    pre {
+        font-family: 'Fira Code', monospace;
+    }
+    article {
+		display: flex;
+        flex-direction: column;
+		height: 100%;
+		margin: 20vh 5vw;
+	}
+</style>
