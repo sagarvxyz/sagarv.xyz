@@ -1,15 +1,34 @@
 ---
+import BaseLayout from "../layouts/baseLayout.astro";
+const {title} = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Sagar Velagala">
+	<section class="hero">
+		<p class="surtitle">Hi! My name's</p>
+		<h1>Sagar Velagala.</h1>
+	</section>
+	<section class="content">
+		<p>
+			<strong>I'm a software engineer</strong> with a background in
+			analytics. Feel free to get in touch on
+			<a href="https://github.com/sagarvxyz">GitHub</a>,
+			<a href="https://www.linkedin.com/in/sagarvelagala/">LinkedIn</a>, or
+			<a href="mailto:sagar.velagala@gmail.com">email</a>.
+		</p>
+	</section>
+</BaseLayout>
+
+<style>
+	.hero {
+		display: flex;
+		flex-direction: column;
+		max-width: 800px;
+	}
+	.content {
+		display: flex;
+		flex-direction: column;
+		max-width: 60%;
+		min-width: 350px;
+	}
+</style>
