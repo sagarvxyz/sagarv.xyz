@@ -1,12 +1,12 @@
 ---
 import BaseLayout from "../layouts/baseLayout.astro";
-const {title} = Astro.props;
+const title = "Sagar Velagala";
 ---
 
-<BaseLayout title="Sagar Velagala">
+<BaseLayout title={title}>
 	<section class="hero">
 		<p class="surtitle">Hi! My name's</p>
-		<h1>Sagar Velagala.</h1>
+		<h1>{title}.</h1>
 	</section>
 	<section class="content">
 		<p>

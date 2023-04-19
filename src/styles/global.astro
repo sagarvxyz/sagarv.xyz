@@ -1,18 +1,11 @@
 ---
-import '@fontsource/bitter/300.css'
-import '@fontsource/bitter/400.css'
-import '@fontsource/raleway/400.css'
-import '@fontsource/raleway/700.css'
-import '@fontsource/fira-code/400.css'
-
-// const text = "rgb(30, 30, 30)";
-// const textMid = "rgb(120, 120, 120)";
-// const textLight = "rgb(240, 240, 240)";
-// const background = "rgb(250, 250, 250)";
-// const primary = "rgb(203, 96, 21)";
-// const secondary = "rgb(140, 169, 215)";
-// const shadow = "rgb(240, 240, 240)";
+import '@fontsource/bitter/300.css';
+import '@fontsource/bitter/400.css';
+import '@fontsource/raleway/400.css';
+import '@fontsource/raleway/700.css';
+import '@fontsource/fira-code/400.css';
 ---
+
 <style is:global>
     :root {
         --text: rgb(30, 30, 30);
@@ -22,6 +15,7 @@ import '@fontsource/fira-code/400.css'
         --background: rgb(250, 250, 250);
         --primary: rgb(203, 96, 21);
         --secondary: rgb(140, 169, 215);
+        --max-width: 800px;
     }
     html {
         color: var(--text);
@@ -74,9 +68,16 @@ import '@fontsource/fira-code/400.css'
         font-family: 'Fira Code', monospace;
     }
     article {
-		display: flex;
+        display: flex;
         flex-direction: column;
-		height: 100%;
-		margin: 20vh 5vw;
-	}
+        max-width: var(--max-width);
+        margin: auto;
+    }
+    header {
+        display: flex;
+        height: 5vh;
+        max-width: var(--max-width);
+        margin: auto;
+        align-items: center;
+    }
 </style>
