@@ -2,7 +2,13 @@
 import Article from '../components/Article.astro';
 import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
-import Styles from '../styles/global.astro';
+import '@fontsource/bitter/300.css';
+import '@fontsource/bitter/400.css';
+import '@fontsource/raleway/400.css';
+import '@fontsource/raleway/700.css';
+import '@fontsource/fira-code/400.css';
+import '../styles/global.css';
+import '../utils/theme.js';
 const { title, author, pubDate } = Astro.props.frontmatter;
 ---
 
@@ -15,6 +21,5 @@ const { title, author, pubDate } = Astro.props.frontmatter;
             <subtitle>{author} - {pubDate}</subtitle>
             <slot />
         </Article>
-        <Styles />
     </body>
 </html>
