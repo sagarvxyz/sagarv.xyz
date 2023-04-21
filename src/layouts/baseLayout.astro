@@ -1,9 +1,8 @@
 ---
 import Article from '../components/Article.astro';
 import Head from '../components/Head.astro';
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import '../styles/global.astro';
+import Styles from '../styles/global.astro';
 ---
 
 <html>
@@ -13,6 +12,6 @@ import '../styles/global.astro';
         <Article>
             <slot />
         </Article>
-        <Footer />
+        <Styles />
     </body>
 </html>
