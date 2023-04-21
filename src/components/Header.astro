@@ -1,0 +1,70 @@
+---
+import ThemeButton from './ThemeButton.astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+    <nav>
+        <li class={currentPath === '/' ? 'current' : ''}>
+            <a href="/">home</a>
+        </li>
+        <li class={currentPath.includes('/blog') ? 'current' : ''}>
+            <a href="/blog">blog</a>
+        </li>
+    </nav>
+    <ThemeButton />
+</header>
+
+<style>
+    header {
+        display: flex;
+        justify-content: end;
+        height: 5vh;
+        max-width: var(--max-width);
+        align-items: center;
+        margin: 0 auto;
+        padding: 1vh 2vw 0 2vw;
+        background-color: var(--background);
+        color: var(--text);
+    }
+
+    nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1vw;
+        text-align: center;
+    }
+    nav li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 5rem;
+        padding: 0.1rem 0.2rem;
+        border: 1px solid var(--shadow);
+        border-radius: 1rem;
+    }
+    nav li a {
+        font-weight: 300;
+        color: var(--text-mid);
+        text-decoration: none;
+    }
+    nav li:hover,
+    nav li:active {
+        background: var(--shadow);
+        text-decoration: none;
+        cursor: pointer;
+    }
+    nav li:hover > a,
+    nav li:active > a {
+        color: var(--text-mid);
+    }
+    nav li.current {
+        background: var(--primary);
+        cursor: default;
+    }
+    nav li.current > a {
+        color: var(--background);
+        cursor: default;
+    }
+</style>
