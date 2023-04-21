@@ -32,7 +32,7 @@ const currentPath = Astro.url.pathname;
     nav {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1vw;
+        gap: 1rem;
         text-align: center;
     }
     nav li {
@@ -40,12 +40,14 @@ const currentPath = Astro.url.pathname;
         align-items: center;
         justify-content: center;
         width: 5rem;
-        padding: 0.1rem 0.2rem;
+        padding: 0.5rem 1rem;
         border: 1px solid var(--shadow);
         border-radius: 1rem;
     }
     nav li a {
+        font: 'Raleway', sans-serif;
         font-weight: 300;
+        text-transform: uppercase;
         color: var(--text-mid);
         text-decoration: none;
     }
@@ -66,5 +68,10 @@ const currentPath = Astro.url.pathname;
     nav li.current > a {
         color: var(--background);
         cursor: default;
+    }
+    @media screen and (min-resolution: 250dpi) {
+        nav li a {
+            font-weight: 400;
+        }
     }
 </style>

@@ -17,7 +17,7 @@ import '@fontsource/fira-code/400.css';
         --text: rgb(30, 30, 30);
         --text-mid: rgb(120, 120, 120);
         --shadow: rgb(240, 240, 240);
-        --text-light: rgb(240, 240, 240);
+        --text-light: rgb(200, 200, 200);
         --background: rgb(250, 250, 250);
         color: var(--text);
         font-size: 62.5%;
@@ -26,7 +26,7 @@ import '@fontsource/fira-code/400.css';
         --text: rgb(250, 250, 250);
         --text-mid: rgb(160, 160, 160);
         --shadow: rgb(50, 50, 50);
-        --text-light: rgb(50, 50, 50);
+        --text-light: rgb(80, 80, 80);
         --background: rgb(30, 30, 30);
     }
     body {
@@ -79,6 +79,11 @@ import '@fontsource/fira-code/400.css';
     }
     pre {
         font-family: 'Fira Code', monospace;
+    }
+    @media screen and (min-resolution: 250dpi) {
+        p {
+            font-weight: 400;
+        }
     }
 </style>
 
