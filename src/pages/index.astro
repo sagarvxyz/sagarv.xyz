@@ -1,34 +1,37 @@
 ---
-import BaseLayout from "../layouts/baseLayout.astro";
-const title = "Sagar Velagala";
+import BaseLayout from '../layouts/baseLayout.astro';
+const title = 'Sagar Velagala';
 ---
 
-<BaseLayout title={title}>
-	<section class="hero">
-		<p class="surtitle">Hi! My name's</p>
-		<h1>{title}.</h1>
-	</section>
-	<section class="content">
-		<p>
-			<strong>I'm a software engineer</strong> with a background in
-			analytics. Feel free to get in touch on
-			<a href="https://github.com/sagarvxyz">GitHub</a>,
-			<a href="https://www.linkedin.com/in/sagarvelagala/">LinkedIn</a>, or
-			<a href="mailto:sagar.velagala@gmail.com">email</a>.
-		</p>
-	</section>
-</BaseLayout>
-
 <style>
-	.hero {
-		display: flex;
-		flex-direction: column;
-		max-width: 800px;
-	}
-	.content {
-		display: flex;
-		flex-direction: column;
-		max-width: 60%;
-		min-width: 350px;
-	}
+    .hero {
+        margin-top: 10vh;
+    }
+    .hero-blurb {
+        display: flex;
+        flex-direction: column;
+        max-width: 60%;
+        min-width: 350px;
+    }
+    .surtitle {
+        margin-block-end: 0;
+    }
 </style>
+
+<BaseLayout title={title}>
+    <div class="hero">
+        <p class="surtitle">Hi! My name's</p>
+        <h1>{title}.</h1>
+        <section class="hero-blurb">
+            <p>
+                <strong>I'm a software engineer</strong> with a background in analytics.
+                Feel free to get in touch on
+                <a href="https://www.linkedin.com/in/sagarvelagala/">LinkedIn</a
+                >,
+                <a href="https://github.com/sagarvxyz">GitHub</a>, or by <a
+                    href="mailto:sagar.velagala@gmail.com">email</a
+                >.
+            </p>
+        </section>
+    </div>
+</BaseLayout>

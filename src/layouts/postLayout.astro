@@ -1,29 +1,31 @@
 ---
-import Head from '../components/PostHead.astro';
+import Article from '../components/Article.astro';
 import Footer from '../components/Footer.astro';
+import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import '../styles/global.astro';
-
 import type { MarkdownLayoutProps } from 'astro';
 
 type Props = MarkdownLayoutProps<{
     title: string;
     author: string;
-    date: string;
+    description: string;
+    pubDate: string;
+    tags: string[];
 }>;
 
-const { title, author, date } = Astro.props.frontmatter;
+const { title, author, pubDate } = Astro.props.frontmatter;
 ---
 
 <html>
-    <Head title={title} />
+    <Head meta={Astro.props.frontmatter} />
     <body>
         <Header />
-        <article>
+        <Article>
             <h1>{title}</h1>
-            <subtitle>{author} - {date}</subtitle>
+            <subtitle>{author} - {pubDate}</subtitle>
             <slot />
-        </article>
+        </Article>
         <Footer />
     </body>
 </html>
