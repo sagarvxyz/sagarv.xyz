@@ -28,7 +28,8 @@ body {
 h1,
 h2,
 h3 {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', system-ui, 'Segoe UI', Roboto, Helvetica, Arial,
+        sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-weight: 700;
     text-transform: uppercase;
     margin-block-start: 0;
@@ -47,7 +48,8 @@ h3 {
     margin-block-end: 0.9rem;
 }
 p {
-    font-family: 'Bitter', serif;
+    font-family: 'Bitter', system-ui, 'Segoe UI', Roboto, Helvetica, Arial,
+        sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-weight: 300;
     margin-block-start: 0;
     margin-block-end: 0.8rem;
