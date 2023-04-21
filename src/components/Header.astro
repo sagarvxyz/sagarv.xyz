@@ -1,6 +1,5 @@
 ---
 import ThemeButton from './ThemeButton.astro';
-import '@fontsource/raleway/400.css';
 const currentPath = Astro.url.pathname;
 ---
 
@@ -45,8 +44,7 @@ const currentPath = Astro.url.pathname;
         border-radius: 1rem;
     }
     nav li a {
-        font: 'Raleway', system-ui, 'Segoe UI', Roboto, Helvetica, Arial,
-            sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+        font-family: var(--header-font);
         font-weight: 400;
         text-transform: uppercase;
         color: var(--text-mid);
