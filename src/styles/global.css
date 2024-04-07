@@ -1,82 +1,82 @@
 :root {
-    --primary: rgb(203, 96, 21);
-    --secondary: rgb(140, 169, 215);
-    --max-width: 800px;
-    --header-font: 'Raleway', system-ui, 'Segoe UI', Roboto, Helvetica, Arial,
-        sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-    --body-font: 'Bitter', system-ui, 'Segoe UI', Roboto, Helvetica, Arial,
-        sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --primary: rgb(203, 96, 21);
+  --secondary: rgb(140, 169, 215);
+  --max-width: 800px;
+  --header-font: "Raleway", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --body-font: "Bitter", system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 html {
-    --text: rgb(30, 30, 30);
-    --text-mid: rgb(100, 100, 100);
-    --shadow: rgb(240, 240, 240);
-    --text-light: rgb(200, 200, 200);
-    --background: rgb(250, 250, 250);
-    color: var(--text);
-    font-size: 62.5%;
+  --text: rgb(30, 30, 30);
+  --text-mid: rgb(100, 100, 100);
+  --shadow: rgb(240, 240, 240);
+  --text-light: rgb(200, 200, 200);
+  --background: rgb(250, 250, 250);
+  color: var(--text);
+  font-size: 62.5%;
 }
 html.dark {
-    --text: rgb(250, 250, 250);
-    --text-mid: rgb(160, 160, 160);
-    --shadow: rgb(50, 50, 50);
-    --text-light: rgb(80, 80, 80);
-    --background: rgb(30, 30, 30);
+  --text: rgb(250, 250, 250);
+  --text-mid: rgb(160, 160, 160);
+  --shadow: rgb(50, 50, 50);
+  --text-light: rgb(80, 80, 80);
+  --background: rgb(30, 30, 30);
 }
 body {
-    margin: 0;
-    font-size: 1.6rem;
-    background: var(--background);
+  margin: 0;
+  font-size: 1.6rem;
+  background: var(--background);
 }
 h1,
 h2,
 h3 {
-    font-family: var(--header-font);
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-block-start: 0;
-    margin-block-end: 0;
+  font-family: var(--header-font);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 h1 {
-    font-size: clamp(3.6rem, 9vw, 8.4rem);
-    margin-block-end: 1.8rem;
+  font-size: clamp(3.6rem, 9vw, 8.4rem);
+  margin-block-end: 1.8rem;
 }
 h2 {
-    font-size: 2.4rem;
-    margin-block-end: 1.2rem;
+  font-size: 2.4rem;
+  margin-block-end: 1.2rem;
 }
 h3 {
-    font-size: 1.8rem;
-    margin-block-end: 0.9rem;
+  font-size: 1.8rem;
+  margin-block-end: 0.9rem;
 }
 p {
-    font-family: var(--body-font);
-    font-weight: 300;
-    margin-block-start: 0;
-    margin-block-end: 0.8rem;
-    line-height: 2.2rem;
+  font-family: var(--body-font);
+  font-weight: 300;
+  margin-block-start: 0;
+  margin-block-end: 0.8rem;
+  line-height: 2.2rem;
 }
 a {
-    color: var(--text);
-    text-decoration: underline;
-    text-decoration-color: var(--secondary);
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--secondary);
 }
 a:hover,
 a:active {
-    color: var(--secondary);
+  color: var(--secondary);
 }
 strong {
-    background-color: var(--primary);
-    color: var(--background);
-    padding: 0.1rem 0.4rem;
-    border-radius: 0.2rem;
+  background-color: var(--primary);
+  color: var(--background);
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.2rem;
 }
 pre {
-    font-family: 'Fira Code', 'Courier New', monospace;
+  font-family: "Fira Code", "Courier New", monospace;
 }
 @media screen and (min-resolution: 250dpi) {
-    p {
-        font-weight: 400;
-    }
+  p {
+    font-weight: 400;
+  }
 }
