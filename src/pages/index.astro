@@ -1,40 +1,47 @@
 ---
-import BaseLayout from '../layouts/baseLayout.astro';
-const title = 'Sagar Velagala';
+import BaseLayout from "../layouts/baseLayout.astro";
+const title = "Sagar Velagala";
 ---
 
 <style>
-    .hero {
-        margin-top: 10vh;
-    }
-    .hero-blurb {
-        display: flex;
-        flex-direction: column;
-        max-width: 60%;
-        min-width: 350px;
-    }
-    .surtitle {
-        margin-block-end: 0;
-    }
+  .hero {
+    margin-top: 10vh;
+  }
+  .hero-blurb {
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    min-width: 350px;
+  }
+  .surtitle {
+    margin-block-end: 0;
+  }
 </style>
 
 <BaseLayout title={title}>
-    <div class="hero">
-        <p class="surtitle">Hi! My name's</p>
-        <h1>{title}.</h1>
-        <section class="hero-blurb">
-            <p>
-                <strong>I'm a software engineer and analyst</strong>. By day I build custom data viz apps on Netflix's Data Science & Engineering team. By night
-                I go on side-quests coding, cooking, gaming, or learning about history and current events.
-                I get a kick out of variety, and love any chance to build new skills or work on problems from end-to-end. I prefer the full quote: <br><br>
-                <q>A jack of all trades is a master of none, <i>but oftentimes better than a master of one.</i></q>
-                <br><br>
-                Find me on
-                <a href="https://www.linkedin.com/in/sagarvelagala/">LinkedIn</a>, 
-                <a href="https://github.com/sagarvxyz">Github</a>,
-                <a href="https://www.instagram.com/sagarvxyz/">Instagram</a>,
-                or <a href="mailto:sagar.velagala@gmail.com">email</a>.
-            </p>
-        </section>
-    </div>
+  <div class="hero">
+    <p class="surtitle">Hi! My name's</p>
+    <h1>{title}.</h1>
+    <section class="hero-blurb">
+      <p>
+        <strong>I'm a software engineer and analyst</strong>. By day I build
+        custom data viz apps on Netflix's Data Science & Engineering team. By
+        night I'm coding, cooking, gaming, or reading/listening about history
+        and current events. I get a kick out of variety, and prefer the full
+        quote: <br /><br />
+        <q
+          >A jack of all trades is a master of none, <i
+            >but oftentimes better than a master of one.</i
+          ></q
+        >
+        <br /><br />
+        Find me on
+        <a href="https://www.linkedin.com/in/sagarvelagala/">LinkedIn</a>,
+        <a href="https://github.com/sagarvxyz">Github</a>,
+        <a href="https://www.instagram.com/sagarvxyz/">Instagram</a>, or <a
+          href="mailto:sagar.velagala@gmail.com">email</a
+        >.
+      </p>
+    </section>
+  </div>
 </BaseLayout>

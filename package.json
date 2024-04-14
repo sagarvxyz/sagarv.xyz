@@ -31,7 +31,18 @@
     "eslint-plugin-astro": "^0.26.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "husky": "^9.0.11",
-    "prettier": "3.2.5"
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0"
+  },
+  "lint-staged": {
+    "*.{astro,md,mdx}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint",
+      "prettier --write"
+    ]
   },
   "release": {
     "branches": [
