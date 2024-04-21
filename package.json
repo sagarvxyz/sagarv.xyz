@@ -1,6 +1,5 @@
 {
   "name": "sagarv.xyz",
-  "packageManager": "yarn@4.1.1",
   "type": "module",
   "private": true,
   "version": "0.0.0",
@@ -42,8 +41,8 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,html,css,json, astro}": [
-      "yarn eslint",
-      "yarn prettier --write --ignore-unknown"
+      "eslint",
+      "prettier --write --ignore-unknown"
     ]
   }
 }
