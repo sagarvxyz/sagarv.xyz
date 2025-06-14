@@ -5,7 +5,7 @@ button {
   font-family: var(--font-header);
   font-size: 0.9rem;
   font-weight: 700;
-  --button-color: var(--color-info);
+  --button-color: var(--color-accent);
   background-color: var(--button-color);
   color: var(--color-text);
   border: var(--color-text) 1px solid;

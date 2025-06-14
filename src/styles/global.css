@@ -17,7 +17,7 @@
   /* COLORS */
   --color-text: oklch(10% 0 0);
   --color-background: oklch(94% 0.003 70);
-  --color-info: oklch(90% 0.2 99);
+  --color-accent: oklch(90% 0.2 99);
 
   /* 
     BREAKPOINTS - note that you can't call these variables within an @media query,

@@ -1,4 +1,4 @@
-import Button from "./Button";
+import NavButton from "./NavButton";
 import styles from "./Header.module.css";
 export default function Header() {
   return (
@@ -8,7 +8,7 @@ export default function Header() {
           Sagar Velagala
         </a>
         <nav className={styles.nav}>
-          <Button label="menu" variant="secondary" />
+          <NavButton label="menu" variant="secondary" />
         </nav>
       </div>
     </header>

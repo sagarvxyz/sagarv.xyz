@@ -1,21 +1,22 @@
 ---
 import "../styles/global.css";
-import Header from "../components/Header.jsx";
+import Header from "../components/Header";
 const { pageTitle } = Astro.props;
 ---
 
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="author" content="Sagar Velagala" />
-    <meta name="description" content="Sagar Velagala's personal website" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{pageTitle}</title>
-  </head>
-  <Header />
-  <body>
-    <slot />
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="Sagar Velagala" />
+        <meta name="description" content="Sagar Velagala's personal website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{pageTitle}</title>
+    </head>
+    <Header />
+    <body>
+        <slot />
+    </body>
 
 
 </html>
