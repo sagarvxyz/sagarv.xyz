@@ -5,40 +5,66 @@ console.log("Welcome!");
 ---
 
 <Page pageTitle={pageTitle}>
-  <main>
-    <h1>Hello world!</h1>
-    <p>
-      "<strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-      ad minim veniam, quis nostrud exercitation <a href="#">ullamco laboris</a>
-      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-      in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-      anim id est laborum."
-    </p>
-    <br />
-    <p>
-      <strong>But I must explain to you</strong> how all this mistaken idea of denouncing
-      pleasure and praising pain was born and I will give you a complete account
-      of the system, and expound the actual teachings of the great explorer of the
-      truth, the master-builder of human happiness. No one rejects, dislikes, or
-      avoids pleasure itself, <a href="#">because it is pleasure</a>, but
-      because those who do not know how to pursue pleasure rationally encounter
-      consequences that are extremely painful. Nor again is there anyone who
-      loves or pursues or desires to obtain pain of itself, because it is pain,
-      but because occasionally circumstances occur in which toil and pain can
-      procure him some great pleasure. To take a trivial example, which of us
-      ever undertakes laborious physical exercise, except to obtain some
-      advantage from it? But who has any right to find fault with a man who
-      chooses to enjoy a pleasure that has no annoying consequences, or one who
-      avoids a pain that produces no resultant pleasure?
-    </p>
-  </main>
+    <main>
+        <section class="hero">
+            <p class="pre-title">Hi! My name's</p>
+            <h1>Sagar Velagala.</h1>
+            <p>
+                <strong
+                    >I'm a software engineer with a focus in analytics</strong
+                >. I've worked in a wide range of roles (revenue operations,
+                marketing, business intelligence, engineering), industries (CPG,
+                B2B SaaS, banking, entertainment), and scales (10s -> 1,000s of
+                employees). Today - I'm building models, pipelines, and custom
+                data viz applications on Netflix's Data Science & Engineering
+                team.
+            </p>
+            <p>
+                Outside of work, family, friends, and the pleasures of normal
+                life, I find myself... learning! For fun! I'm usually reading,
+                tinkering, or making time for some new project or hobby. One day
+                I'll start writing about these odds and ends and lessons
+                learned. For now I'll just say I get a kick out of variety and
+                prefer the full quote,
+
+                <q
+                    >A jack of all trades is a master of none, <strong
+                        >but oftentimes better than a master of one</strong
+                    >.</q
+                >
+
+                If you'd like to get in touch, find me on: <a
+                    href="https://www.linkedin.com/in/sagarvelagala/"
+                    target="_blank">LinkedIn</a
+                >,
+
+                <a href="https://www.github.com/sagarvxyz" target="_blank"
+                    >GitHub</a
+                >, <a
+                    href="https://www.instagram.com/sagarvxyz/"
+                    target="_blank">Instagram</a
+                >, or just send me an <a
+                    href="mailto:sagar.velagala@gmail.com"
+                    target="_blank">email</a
+                >.
+            </p>
+        </section>
+    </main>
 </Page>
 
 <style>
-  main {
-    width: 100%;
-    margin: 0 auto;
-  }
+    .hero {
+        max-width: var(--md);
+        justify-self: start;
+    }
+
+    .pre-title {
+        margin-bottom: -0.5rem;
+        padding-left: 0.2rem;
+    }
+
+    h1 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
 </style>
