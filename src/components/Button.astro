@@ -1,0 +1,57 @@
+---
+/**
+ * A configurable button with customizable label, and variants.
+ *
+ * @prop {string} label - The text to display on the button.
+ * @prop {'primary' | 'secondary' | 'tertiary'} [variant='primary'] - The style of the button.
+ */
+
+const { label, variant = "primary", ...rest } = Astro.props;
+---
+
+<button class:list={[variant]} aria-label={label} {...rest}>
+    {label}
+</button>
+
+<style>
+    button {
+        padding: 0.25em 1em;
+        border-radius: 10px;
+        cursor: pointer;
+        font-family: var(--font-header);
+        font-size: 0.9rem;
+        font-weight: 700;
+        --button-color: var(--color-accent);
+        background-color: var(--button-color);
+        color: var(--color-text);
+        border: var(--color-text) 1px solid;
+        box-shadow: -3px 2px 0 var(--color-text);
+    }
+
+    .secondary {
+        --button-color: var(--color-background);
+        color: var(--color-text);
+    }
+
+    .tertiary {
+        --button-color: var(--color-background);
+        color: var(--color-text);
+        box-shadow: none;
+        font-weight: 400;
+    }
+
+    button:hover {
+        background-color: oklch(
+            from var(--button-color) calc(l * 1.1 + 0.05) c h
+        );
+    }
+
+    button:active:not(.tertiary) {
+        background-color: oklch(
+            from var(--button-color) calc(l * 1.1 + 0.05) c h
+        );
+        box-shadow: none;
+        transform: translate(-3px, 2px);
+        transition: transform 0.03s linear;
+    }
+</style>

@@ -1,0 +1,21 @@
+---
+import Button from "./Button.astro";
+
+/**
+ * NavButton component renders a button wrapped in an anchor tag.
+ *
+ * @prop {string} label - The label for the button.
+ * @prop {'primary' | 'secondary' | 'tertiary'} [variant='secondary'] - The variant of the button.
+ * @prop {string} href - The URL that the anchor tag points to.
+ */
+const {
+  label,
+  variant = "secondary",
+  href,
+  ...props
+} = Astro.props;
+---
+
+<a href={href} {...props}>
+  <Button {label} {variant} />
+</a>

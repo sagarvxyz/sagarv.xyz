@@ -1,71 +1,34 @@
 ---
-import ThemeButton from './ThemeButton.astro';
-const currentPath = Astro.url.pathname;
+import NavButton from "./NavButton.astro";
 ---
 
-<header>
-    <!-- <nav>
-        <li class={currentPath === '/' ? 'current' : ''}>
-            <a href="/">home</a>
-        </li>
-        <li class={currentPath.includes('/notes') ? 'current' : ''}>
-            <a href="/notes">notes</a>
-        </li>
-    </nav> -->
-    <ThemeButton />
+<header class="header">
+    <div class="container">
+        <a aria-label="logo" href="/" class="logo"> SV </a>
+        <nav class="nav">
+            <NavButton label="blog" variant="secondary" />
+        </nav>
+    </div>
 </header>
 
 <style>
-    header {
-        display: flex;
-        justify-content: end;
-        height: 5vh;
-        max-width: var(--max-width);
-        align-items: center;
-        margin: 0 auto;
-        padding: 1vh 2vw 0 2vw;
-        background-color: var(--background);
-        color: var(--text);
+    .header {
+        margin: 12px var(--page-margin);
+        padding: 0;
     }
 
-    nav {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
-        text-align: center;
-    }
-    nav li {
+    .container {
+        max-width: var(--md);
+        margin: 0 auto;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-        width: 5rem;
-        padding: 0.5rem 1rem;
-        border: 1px solid var(--shadow);
-        border-radius: 1rem;
     }
-    nav li a {
-        font-family: var(--header-font);
-        font-weight: 400;
-        text-transform: uppercase;
-        color: var(--text-mid);
+
+    .logo {
+        font-family: var(--font-header);
+        font-weight: 700;
+        font-size: 1.25rem;
         text-decoration: none;
-    }
-    nav li:hover,
-    nav li:active {
-        background: var(--shadow);
-        text-decoration: none;
-        cursor: pointer;
-    }
-    nav li:hover > a,
-    nav li:active > a {
-        color: var(--text-mid);
-    }
-    nav li.current {
-        background: var(--primary);
-        cursor: default;
-    }
-    nav li.current > a {
-        color: var(--background);
-        cursor: default;
     }
 </style>
