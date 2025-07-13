@@ -1,47 +1,74 @@
 ---
-import BaseLayout from "../layouts/baseLayout.astro";
-const title = "Sagar Velagala";
+import Page from "../layouts/BaseLayout.astro";
+const pageTitle = "Sagar Velagala";
 ---
 
-<style>
-  .hero {
-    margin-top: 10vh;
-  }
-  .hero-blurb {
-    display: flex;
-    flex-direction: column;
-    max-width: 60%;
-    min-width: 350px;
-  }
-  .surtitle {
-    margin-block-end: 0;
-  }
-</style>
+<Page pageTitle={pageTitle}>
+    <main>
+        <section class="hero">
+            <p class="pre-title">Hi! My name's</p>
+            <h1>Sagar Velagala.</h1>
+            <p>
+                <strong
+                    >I'm a software engineer with a focus in analytics</strong
+                >. I've worked in a wide range of roles (revenue operations,
+                marketing, business intelligence, engineering), industries (CPG,
+                B2B SaaS, banking, entertainment), and scales (10s -> 1,000s of
+                employees). Today - I'm building models, pipelines, and custom
+                data viz applications on Netflix's Data Science & Engineering
+                team.
+            </p>
+            <p>
+                Outside of work, family, friends, and the pleasures of normal
+                life, I find myself... learning! For fun! I'm usually reading,
+                tinkering, or making time for some new project or hobby. One day
+                I'll start writing about these odds and ends and lessons
+                learned. For now I'll just say I get a kick out of variety and
+                prefer the full quote,
 
-<BaseLayout title={title}>
-  <div class="hero">
-    <p class="surtitle">Hi! My name's</p>
-    <h1>{title}.</h1>
-    <section class="hero-blurb">
-      <p>
-        <strong>I'm a software engineer with a focus in analytics.</strong>
-        By day I build models, pipelines, and data applications on Netflix's
-        Data Science & Engineering team. I get a kick out of variety
-        and prefer the full quote,
-        <br /><br />
-        <q
-          >A jack of all trades is a master of none, <i
-            >but oftentimes better than a master of one.</i
-          >
-        </q>
-        <br /><br />
-        If you'd like to get in touch, find me on
-        <a href="https://www.linkedin.com/in/sagarvelagala/">LinkedIn</a>,
-        <a href="https://www.instagram.com/sagarvxyz/">Instagram</a>,
-        <a href="https://www.github.com/sagarvxyz">GitHub</a>, or send me an <a
-          href="mailto:sagar.velagala@gmail.com">email</a
-        >.
-      </p>
-    </section>
-  </div>
-</BaseLayout>
+                <q
+                    >A jack of all trades is a master of none, <strong
+                        >but oftentimes better than a master of one</strong
+                    >.</q
+                >
+
+                If you'd like to get in touch, find me on: <a
+                    href="https://www.linkedin.com/in/sagarvelagala/"
+                    target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a
+                >,
+
+                <a
+                    href="https://www.github.com/sagarvxyz"
+                    target="_blank"
+                    rel="noopener noreferrer">GitHub</a
+                >, <a
+                    href="https://www.instagram.com/sagarvxyz/"
+                    target="_blank"
+                    rel="noopener noreferrer">Instagram</a
+                >, or just send me an <a
+                    href="mailto:sagar.velagala@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer">email</a
+                >.
+            </p>
+        </section>
+    </main>
+</Page>
+
+<style>
+    .hero {
+        max-width: var(--md);
+        justify-self: start;
+    }
+
+    .pre-title {
+        margin-bottom: -0.5rem;
+        padding-left: 0.2rem;
+    }
+
+    h1 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+</style>
