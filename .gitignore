@@ -1,1 +1,30 @@
-node_modules
+# Build outputs
+/dist/
+/out/
+*.wasm
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Web
+web/dist/
+web/node_modules/
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

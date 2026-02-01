@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "declaration": true,
+    "strict": true,
+    "noEmit": false,
+    "outDir": "dist",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "baseUrl": ".",
+    "paths": {
+      "@ui/*": ["ui/*"]
+    }
+  },
+  "include": ["site/**/*", "ui/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
