@@ -20,7 +20,7 @@ const pageTitle = "Sagar Velagala";
                 for some new project or hobby.
             </p>
         </section>
-        <p>
+        <p class="more">
             I get a kick out of variety and prefer the full quote,
 
             <q
@@ -53,11 +53,13 @@ const pageTitle = "Sagar Velagala";
      * h1 (nudged a little low), its right edge reaches the "g" in "Sagar", and
      * its negative margins keep it from changing the height of the h1 row.
      */
-    .hero {
+    main {
         --h1: clamp(2.75rem, 11vw, 4rem);
         --orb: clamp(7rem, 18vw, 16.5rem); /* resting diameter */
         --overlap: calc(var(--h1) * 1.75); /* reaches the middle of the "g" */
+    }
 
+    .hero {
         display: grid;
         grid-template-columns:
             [orb-start] calc(var(--orb) - var(--overlap))
@@ -87,7 +89,6 @@ const pageTitle = "Sagar Velagala";
     .pre-title {
         grid-row: 1;
         margin-bottom: -0.5rem;
-        padding-left: 0.2rem;
     }
 
     h1 {
@@ -99,6 +100,17 @@ const pageTitle = "Sagar Velagala";
     .intro {
         grid-row: 3;
         margin-top: 0.75rem;
+    }
+
+    .more {
+        margin-inline-start: calc(var(--orb) - var(--overlap));
+    }
+
+    @media (width >= 40rem) {
+        .more q {
+            /* Keep the accent outside the shared text column. */
+            margin-inline-start: calc(-1rem - 4px);
+        }
     }
 
     /* Narrow screens: same offset for the pre-title and h1; the paragraph uses the full width. */
@@ -121,6 +133,10 @@ const pageTitle = "Sagar Velagala";
 
         .intro {
             grid-column: body-start / text-end;
+        }
+
+        .more {
+            margin-inline-start: 0;
         }
     }
 </style>
