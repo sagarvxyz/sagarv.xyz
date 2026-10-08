@@ -113,6 +113,8 @@ export class TidalOrb extends LitElement {
     #lean = { x: 0, y: 0, vx: 0, vy: 0 }; // whole-orb drift toward the pointer
     #bump = new Float64Array(N);
     #raf = 0;
+    #tapTimer = 0;
+    #tapStart: { id: number; x: number; y: number } | null = null;
     #last = 0;
     #carry = 0;
     #time = Math.random() * 100;
@@ -140,6 +142,9 @@ export class TidalOrb extends LitElement {
         if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
         window.addEventListener("pointermove", this.#onPointer, { passive: true });
+        window.addEventListener("pointerdown", this.#onTouchStart, { passive: true });
+        window.addEventListener("pointerup", this.#onTouchEnd, { passive: true });
+        window.addEventListener("pointercancel", this.#onTouchEnd, { passive: true });
         document.addEventListener("pointerleave", this.#onLeave);
         document.addEventListener("visibilitychange", this.#sync);
         this.#observer = new IntersectionObserver(([entry]) => {
@@ -152,22 +157,60 @@ export class TidalOrb extends LitElement {
     disconnectedCallback() {
         super.disconnectedCallback();
         window.removeEventListener("pointermove", this.#onPointer);
+        window.removeEventListener("pointerdown", this.#onTouchStart);
+        window.removeEventListener("pointerup", this.#onTouchEnd);
+        window.removeEventListener("pointercancel", this.#onTouchEnd);
         document.removeEventListener("pointerleave", this.#onLeave);
         document.removeEventListener("visibilitychange", this.#sync);
         this.#observer?.disconnect();
+        this.#tapStart = null;
+        this.#onLeave();
         cancelAnimationFrame(this.#raf);
         this.#raf = 0;
     }
 
+    #onTouchStart = (e: PointerEvent) => {
+        if (e.pointerType === "touch" && e.isPrimary) {
+            this.#tapStart = { id: e.pointerId, x: e.clientX, y: e.clientY };
+        }
+    };
+
+    #onTouchEnd = (e: PointerEvent) => {
+        const start = this.#tapStart;
+        if (!start || e.pointerId !== start.id) return;
+        this.#tapStart = null;
+        // A scroll's pointercancel, or more than 10px of travel, is not a tap.
+        if (e.type === "pointerup" && Math.hypot(e.clientX - start.x, e.clientY - start.y) <= 10) {
+            this.#onPointer(e);
+        }
+    };
+
     #onPointer = (e: PointerEvent) => {
+        if (e.pointerType === "touch" && e.type !== "pointerup") {
+            const start = this.#tapStart;
+            if (
+                start?.id === e.pointerId &&
+                Math.hypot(e.clientX - start.x, e.clientY - start.y) > 10
+            ) {
+                this.#tapStart = null;
+            }
+            return;
+        }
+        clearTimeout(this.#tapTimer);
         const box = this.getBoundingClientRect();
         this.#pointer = {
             x: C - R + ((e.clientX - box.left) / box.width) * 2 * R,
             y: C - R + ((e.clientY - box.top) / box.height) * 2 * R,
         };
+        if (e.pointerType === "touch") {
+            this.#tapTimer = window.setTimeout(this.#onLeave, 700);
+        }
     };
 
-    #onLeave = () => {
+    #onLeave = (e?: PointerEvent) => {
+        // Touch pointers leave on release; let the brief tap pulse finish.
+        if (e?.pointerType === "touch") return;
+        clearTimeout(this.#tapTimer);
         this.#pointer = null;
     };
 
