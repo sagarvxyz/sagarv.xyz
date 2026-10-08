@@ -94,3 +94,13 @@ main {
     margin: auto;
     max-width: var(--md);
 }
+
+/* Until the tidal-orb script loads (or without JS), show it as a plain circle. */
+tidal-orb:not(:defined) {
+    display: block;
+    aspect-ratio: 1;
+    border: 1.25px solid var(--color-text);
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: var(--orb-shadow-x, -4px) var(--orb-shadow-y, 3px) 0 var(--color-text);
+}
