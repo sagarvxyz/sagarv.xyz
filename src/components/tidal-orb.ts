@@ -28,11 +28,17 @@ const STEP = 1 / 120;
 // reads as hand-drawn rather than noisy.
 const ANGLES = Array.from({ length: N }, (_, i) => (i / N) * Math.PI * 2);
 const IMPERFECTION = ANGLES.map(
-    (a) => 0.01 * Math.sin(2 * a + 0.7) + 0.006 * Math.sin(3 * a + 2.1) + 0.003 * Math.sin(5 * a + 4.2),
+    (a) =>
+        0.01 * Math.sin(2 * a + 0.7) +
+        0.006 * Math.sin(3 * a + 2.1) +
+        0.003 * Math.sin(5 * a + 4.2),
 );
 
 function pathFor(radii: ArrayLike<number>, dx = 0, dy = 0): string {
-    const pts = ANGLES.map((a, i) => [C + dx + radii[i] * Math.cos(a), C + dy + radii[i] * Math.sin(a)]);
+    const pts = ANGLES.map((a, i) => [
+        C + dx + radii[i] * Math.cos(a),
+        C + dy + radii[i] * Math.sin(a),
+    ]);
     const p = (i: number) => pts[(i + N) % N];
     let d = `M${p(0)[0].toFixed(2)},${p(0)[1].toFixed(2)}`;
     // Closed Catmull-Rom spline through every point, written as cubic Béziers.
@@ -61,17 +67,34 @@ export class TidalOrb extends LitElement {
     static styles = css`
         :host {
             display: block;
+            position: relative;
             aspect-ratio: 1;
             pointer-events: none;
         }
 
-        /* The offset shadow is in screen pixels, so it stays the same at any orb size. */
         svg {
             display: block;
             width: 100%;
             height: 100%;
             overflow: visible;
-            filter: drop-shadow(var(--orb-shadow-x, -4px) var(--orb-shadow-y, 3px) 0 var(--color-text, #111));
+        }
+
+        /* Offset the SVG layer, not a filter surface, in screen pixels. */
+        .shadow {
+            position: absolute;
+            inset: 0;
+            translate: var(--orb-shadow-x, -4px) var(--orb-shadow-y, 3px);
+            fill: var(--color-text, #111);
+            stroke: var(--color-text, #111);
+        }
+
+        .shadow path {
+            stroke-width: 1.25px;
+            vector-effect: non-scaling-stroke;
+        }
+
+        .surface {
+            position: relative;
         }
 
         .body {
@@ -80,7 +103,6 @@ export class TidalOrb extends LitElement {
             stroke-width: 1.25px;
             vector-effect: non-scaling-stroke;
         }
-
     `;
 
     #offset = new Float64Array(N); // radial displacement from the resting shape
@@ -97,16 +119,24 @@ export class TidalOrb extends LitElement {
     #visible = false;
     #observer?: IntersectionObserver;
     #body?: SVGPathElement;
+    #shadow?: SVGPathElement;
 
     render() {
         // The element box is the resting circle; stretching overflows it.
-        return html`<svg viewBox="${C - R} ${C - R} ${2 * R} ${2 * R}" aria-hidden="true">
-            ${svg`<path class="body" d=${pathFor(RESTING)}></path>`}
-        </svg>`;
+        const path = pathFor(RESTING);
+        return html`
+            <svg class="shadow" viewBox="${C - R} ${C - R} ${2 * R} ${2 * R}" aria-hidden="true">
+                ${svg`<path d=${path}></path>`}
+            </svg>
+            <svg class="surface" viewBox="${C - R} ${C - R} ${2 * R} ${2 * R}" aria-hidden="true">
+                ${svg`<path class="body" d=${path}></path>`}
+            </svg>
+        `;
     }
 
     firstUpdated() {
         this.#body = this.renderRoot.querySelector(".body")!;
+        this.#shadow = this.renderRoot.querySelector(".shadow path")!;
         if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
         window.addEventListener("pointermove", this.#onPointer, { passive: true });
@@ -160,7 +190,9 @@ export class TidalOrb extends LitElement {
             this.#step(STEP);
             this.#carry -= STEP;
         }
-        this.#body!.setAttribute("d", pathFor(this.#radii, this.#lean.x, this.#lean.y));
+        const path = pathFor(this.#radii, this.#lean.x, this.#lean.y);
+        this.#body!.setAttribute("d", path);
+        this.#shadow!.setAttribute("d", path);
         this.#raf = requestAnimationFrame(this.#frame);
     };
 
@@ -181,7 +213,8 @@ export class TidalOrb extends LitElement {
         const strength = moon.strength;
         const t = this.#time;
         // The bump's direction and width wander slowly, so the pull never looks mechanical.
-        const phi = Math.atan2(moon.y - C, moon.x - C) + 0.1 * Math.sin(t * 0.7) + 0.05 * Math.sin(t * 1.9);
+        const phi =
+            Math.atan2(moon.y - C, moon.x - C) + 0.1 * Math.sin(t * 0.7) + 0.05 * Math.sin(t * 1.9);
         const focus = FOCUS + 0.5 * Math.sin(t * 0.5);
 
         // A soft bump (von Mises) toward the pointer. Subtracting its mean makes
@@ -199,11 +232,13 @@ export class TidalOrb extends LitElement {
             const a = ANGLES[i];
             const tide = strength * PULL * (bump[i] - mean);
             // A slow, low-amplitude breath so it stays alive with no pointer.
-            const idle = R * (0.006 * Math.sin(t * 0.9 + 2 * a) + 0.004 * Math.sin(t * 1.7 - 3 * a));
+            const idle =
+                R * (0.006 * Math.sin(t * 0.9 + 2 * a) + 0.004 * Math.sin(t * 1.7 - 3 * a));
             const goal = tide + idle;
             const stiffness = goal > offset[i] ? STIFFNESS * REACHING : STIFFNESS;
             const neighbours = offset[(i + N - 1) % N] + offset[(i + 1) % N] - 2 * offset[i];
-            const accel = stiffness * (goal - offset[i]) + TENSION * neighbours - DAMPING * velocity[i];
+            const accel =
+                stiffness * (goal - offset[i]) + TENSION * neighbours - DAMPING * velocity[i];
             velocity[i] += accel * dt;
         }
 
