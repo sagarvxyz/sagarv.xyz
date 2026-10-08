@@ -1,0 +1,14 @@
+# Sagar Velagala
+
+Software engineer specializing in data and analytics.
+
+## Pages
+
+- [About and contact](https://sagarv.xyz/index.md): The current homepage as Markdown.
+- [HTML homepage](https://sagarv.xyz/): The same content for web browsers.
+
+The homepage supports Accept: text/markdown or the explicit /index.md URL.
+HTML is the default representation. Markdown contains the complete homepage text,
+including the quote and contact links, with no JavaScript required.
+This site exposes no API or MCP tools. Use the published content as the source;
+do not infer additional employment history or proprietary employer information.
