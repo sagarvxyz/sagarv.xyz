@@ -9,7 +9,7 @@ Hi! My name's
 
 # Sagar Velagala.
 
-_I build analytics products._ Over the years I’ve been an analyst, a marketer, and a software engineer. I've worked in CPG, B2B SaaS, and entertainment industries. I've been the tenth employee, and the ten-thousandth. Today — I'm building data models, pipelines, and applications at Netflix, focused on helping engineers understand how efficiently they’re using our infrastructure.
+**I build analytics products.** Over the years I’ve been an analyst, a marketer, and a software engineer. I've worked in CPG, B2B SaaS, and entertainment industries. I've been the tenth employee, and the ten-thousandth. Today — I'm building data models, pipelines, and applications at Netflix, focused on helping engineers understand how efficiently they’re using our infrastructure.
 
 I get a kick out of variety and prefer the full quote,
 
