@@ -1,58 +1,103 @@
 # sagarv.xyz
 
-The existing personal homepage, migrated from Astro to native HTML, plain CSS,
-and a Lit tidal-orb enhancement. Vite handles the build; oxlint, oxfmt and stylelint
-handle code quality. There is no client-side router or Markdown-to-HTML page generator.
+Source for [Sagar Velagala’s personal website](https://sagarv.xyz): a small,
+content-first homepage built with native HTML, plain CSS, and a Lit tidal-orb
+enhancement. The page’s content remains readable without JavaScript.
 
-## Develop and verify
+Vite builds the site, and a Cloudflare Worker serves its HTML and Markdown
+representations. There is no client-side router or Markdown-to-HTML page generator.
 
-Use Node 22.12+ (or a newer supported LTS).
+## Getting started
+
+Use Node.js 22.12+ on a supported LTS release and npm. If you use
+[mise](https://mise.jdx.dev/), `mise install` installs the LTS version configured
+in `mise.toml`.
 
 ```sh
 npm ci
 npm run dev
+```
+
+The development server uses Vite’s Cloudflare plugin to run the Worker in
+`workerd`, with module serving and hot module replacement.
+
+To build and preview the production assets locally:
+
+```sh
 npm run build
 npm run preview
+```
+
+Preview runs the same Worker against the built assets. Neither command publishes
+the site.
+
+## Checks
+
+```sh
 npm test
 npm run lint
 npm run fmt:check
 ```
 
-Vite's Cloudflare plugin runs the same Worker in workerd during development and
-built previews. Development adds Vite's module serving and HMR; preview serves
-the built assets. The HTML and Markdown are readable without JavaScript.
+- `npm test` checks the Worker’s representation routing with Node’s test runner.
+- `npm run lint` checks TypeScript with oxlint and CSS with stylelint.
+- `npm run fmt:check` checks formatting with oxfmt; `npm run fmt` applies it.
+- `npm run build` also runs TypeScript’s type checker before building.
 
-## Structure
+## Project structure
 
 ```text
-index.html          Existing homepage copy, plus agent / Markdown footer links
-404.html            Existing error-page content
-public/             Markdown counterparts, llms.txt, robots.txt, sitemap, favicon
-src/main.ts         Registers the Lit orb
+index.html          Homepage content, metadata, and discovery links
+404.html            HTML error page
+public/             Markdown content, llms.txt, robots.txt, sitemap, and favicon
+src/main.ts         Registers the Lit tidal-orb component
 src/components/     Web components
 src/styles/         Plain CSS
-src/worker.ts       HTML / Markdown negotiation
-tests/              Representation-routing tests
+src/worker.ts       Request routing and HTML / Markdown negotiation
+tests/              Worker routing tests
+vite.config.ts      Vite build and Cloudflare integration
+wrangler.jsonc      Worker and asset configuration
 ```
 
-Keep `public/index.md` in sync with the homepage text. Maintaining this small
-editorial counterpart avoids converting HTML into Markdown or using Markdown as
-the site's layout language. The homepage offers `Accept: text/markdown`, explicit
-`.md` URLs, `Vary: Accept`, and discovery links; HTML is the default on ties.
+The current site contains the homepage and error page, not a blog, résumé
+timeline, or policy pages.
 
-The résumé timeline, policy text and Markdown blog are **not** in this release.
-They remain on the local `draft/lit-site` branch for further review.
+## HTML and Markdown
 
-## Production
-
-Cloudflare Workers, not Pages. `npm run build` produces `dist/client` and the
-Worker deployment configuration at `dist/sagarvxyz/wrangler.json`.
-
-Deploy using that generated configuration, not the old Astro `dist` asset root:
+The homepage is available as HTML for browsers and Markdown for readers and
+agents:
 
 ```sh
+# Request the Markdown representation of the homepage.
+curl -H 'Accept: text/markdown' https://sagarv.xyz/
+
+# Or use the explicit Markdown URL.
+curl https://sagarv.xyz/index.md
+```
+
+HTML is the default and wins when both representations have equal preference.
+Negotiated responses include `Vary: Accept`; discovery links point to Markdown,
+`llms.txt`, and the sitemap. Missing pages retain a 404 status in either
+representation.
+
+When editing homepage copy, update both `index.html` and `public/index.md`.
+Likewise, keep `404.html` and `public/404.md` aligned. Markdown files are maintained
+directly, not generated from HTML or used as the site’s layout language.
+
+## Deployment
+
+The site targets **Cloudflare Workers, not Cloudflare Pages**. A production build
+outputs static assets to `dist/client` and the generated Worker configuration to
+`dist/sagarvxyz/wrangler.json`.
+
+With Wrangler authenticated to the intended Cloudflare account, build and deploy
+using the generated configuration:
+
+```sh
+npm run build
 npx wrangler deploy --config dist/sagarvxyz/wrangler.json
 ```
 
-Building and previewing do not publish anything. Deployment and pushes to the
-production branch require explicit approval.
+The deploy command publishes to Cloudflare. Use the generated configuration,
+not an old Astro `dist` asset root. Deployment and pushes to the production branch
+require explicit approval.
